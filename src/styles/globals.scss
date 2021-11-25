@@ -1,0 +1,14 @@
+@import './variables.scss';
+
+// reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-family;
+}
+
+body {
+    font-size: $base-font;
+    color: $text-color-1;
+}
