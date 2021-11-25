@@ -1,7 +1,7 @@
 <template>
   <div class="general-card-container">
       <div class="img-box">
-          <img :src=" image " alt="title">
+          <img :src="image" :alt="title">
       </div>
       <div class="box">
           <h1 class="pb title">
@@ -44,7 +44,7 @@ export default {
                 flex-direction: column;
                 .img-box {
                     width: 100%;
-                    height: 300px;
+                    height: 200px;
                     
                     img {
                         padding: 1rem;
@@ -66,15 +66,21 @@ export default {
                     .title {
                         text-transform: uppercase;
                         font-weight: 500;
-                        padding-right: 1.5rem;
-                        padding-left: 1.5rem;
+                        padding-right: 1rem;
+                        padding-left: 1rem;
+                        font-size: 1.2rem;
+                    }
+                    .subTitle{
+                        font-weight: 500;
+                        font-size: 1.1rem;
                     }
                     .subTitle,
                     .text {
                         color: $text-color-2;
                     }
-                    .text2 {
-                        font-size: 1.3rem;
+                    .text2,
+                    .text {
+                        font-size: 0.9rem;
                     }
                 }
             }

@@ -1,7 +1,9 @@
 <template>
   <section class="main-section">
-       <div class="container">
-            <div class="list-container" v-for="(album, i) in albumList" :key="`album-${i}`">
+       <div class="container" v-if="albumList.length !== 0">
+            <div class="list-container"
+                 v-for="(album, i) in albumList" :key="`album-${i}`"
+            >
                 <Card 
                       :image="album.poster"
                       :title="album.title"
@@ -11,17 +13,20 @@
                 />
             </div>
        </div>
+       <Loader v-else /> 
   </section>
 </template>
 
 <script>
 import axios from 'axios';
-import Card from '@/components/Card.vue'
+import Card from '@/components/Card.vue';
+import Loader from '@/components/Loader.vue';
 
 export default {
     name: 'Main',
     components: {
         Card,
+        Loader,
     },
     data() {
         return {
@@ -51,12 +56,11 @@ export default {
 
 .main-section {
     background-color: $bg-1;
-    height: 100%;
     .container {
-        padding: 10rem 10rem;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        padding: 6rem 3rem;
         .list-container {
             width: calc(100% / 8);
             padding: 1rem;
