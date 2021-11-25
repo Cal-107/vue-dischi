@@ -8,7 +8,8 @@
     font-family: $font-family;
 }
 
-body {
+#app {
     font-size: $base-font;
     color: $text-color-1;
+    height: 100vh;
 }

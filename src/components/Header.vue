@@ -15,7 +15,7 @@ export default {
 @import '@/styles/variables.scss';
 
 .header {
-    background-color: $bg-1;
+    background-color: $bg-2;
 }
 
 img {
