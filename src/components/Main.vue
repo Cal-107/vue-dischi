@@ -1,8 +1,8 @@
 <template>
   <section class="main-section">
-       <div class="container" v-if="albumList.length !== 0">
+       <div class="container" v-if="cardList.length !== 0">
             <div class="list-container"
-                 v-for="(album, i) in albumList" :key="`album-${i}`"
+                 v-for="(album, i) in cardList" :key="`album-${i}`"
             >
                 <Card 
                       :image="album.poster"
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import Card from '@/components/Card.vue';
 import Loader from '@/components/Loader.vue';
 
@@ -28,26 +28,29 @@ export default {
         Card,
         Loader,
     },
-    data() {
-        return {
-            albumList: [],
-        };
-    },
+    props: {
+        cardList: Array,
+    }
+    // data() {
+    //     return {
+    //         albumList: [],
+    //     };
+    // },
 
-    created() {
-        this.getAlbumList();
-    },
+    // created() {
+    //     this.getAlbumList();
+    // },
 
-    methods: {
-        getAlbumList() {
-            axios
-            .get('https://flynn.boolean.careers/exercises/api/array/music')
-            .then(response => {
-                this.albumList = response.data.response;
-            })
-            .catch(error => console.log(error));
-        },
-    },
+    // methods: {
+    //     getAlbumList() {
+    //         axios
+    //         .get('https://flynn.boolean.careers/exercises/api/array/music')
+    //         .then(response => {
+    //             this.albumList = response.data.response;
+    //         })
+    //         .catch(error => console.log(error));
+    //     },
+    // },
 }
 </script>
 

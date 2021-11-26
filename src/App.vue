@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <Header />
+    <Header @toSetValue="setValue"/>
 
-    <Main />
+    <Main :cardList="filteredAlbum"/>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import Header from './components/Header.vue';
 import Main from './components/Main.vue';
 
@@ -15,7 +16,42 @@ export default {
   components: {
     Header,
     Main,
-  }
+  },
+  data() {
+        return {
+            albumList: [],
+            valueSelect: '',
+        };
+    },
+    computed: {
+      filteredAlbum() {
+        if (this.valueSelect === '') {
+          return this.albumList
+        }
+
+        return this.albumList.filter(el => {
+          return el.genre.includes(this.valueSelect)
+        })
+      }
+    },
+
+    created() {
+        this.getAlbumList();
+    },
+
+    methods: {
+        getAlbumList() {
+            axios
+            .get('https://flynn.boolean.careers/exercises/api/array/music')
+            .then(response => {
+                this.albumList = response.data.response;
+            })
+            .catch(error => console.log(error));
+        },
+        setValue(value) {
+          this.valueSelect = value;
+        }
+    },
 }
 </script>
 
