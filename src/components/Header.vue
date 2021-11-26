@@ -3,14 +3,20 @@
       <img src="@/assets/logo.png" alt="Logo Spotify">
       <div class="choose-genre">
         <label>Choose your genre</label>
-        <select v-model="genreValue" 
+        <select 
+                v-model="genreValue" 
                 @change="$emit('toSetValue', genreValue)"
         >
-            <option value=''>All</option>
-            <option value="Rock">Rock</option>
+            <option value=""> All Genre </option>
+            <option 
+                v-for="(el, i) in genreList" :key="`el-${i}`"
+            >
+            {{ el }}
+            </option>
+            <!-- <option value=''>All</option>
             <option value="Pop">Pop</option>
             <option value="Jazz">Jazz</option>
-            <option value="Metal">Metal</option>
+            <option value="Metal">Metal</option> -->
         </select>
       </div>
   </div>
@@ -20,6 +26,9 @@
 
 export default {
     name: 'Header',
+    props: {
+        genreList: Array,
+    },
     data() {
         return {
             genreValue: '',

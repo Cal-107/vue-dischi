@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header @toSetValue="setValue"/>
+    <Header @toSetValue="setValue" :genreList="genreList"/>
 
-    <Main :cardList="filteredAlbum"/>
+    <Main :cardList="filteredAlbum" />
   </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
         return {
             albumList: [],
             valueSelect: '',
+            genreList: [],
         };
     },
     computed: {
@@ -45,6 +46,12 @@ export default {
             .get('https://flynn.boolean.careers/exercises/api/array/music')
             .then(response => {
                 this.albumList = response.data.response;
+
+                this.albumList.forEach(el => {
+                  if (!this.genreList.includes(el.genre)) {
+                    this.genreList.push(el.genre)
+                  } 
+                })
             })
             .catch(error => console.log(error));
         },
