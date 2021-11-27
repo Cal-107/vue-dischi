@@ -1,15 +1,15 @@
 <template>
   <section class="main-section">
-       <div class="container" v-if="cardList.length !== 0">
+       <div class="container" v-if="condLoader">
             <div class="list-container"
                  v-for="(album, i) in cardList" :key="`album-${i}`"
             >
                 <Card 
-                      :image="album.poster"
-                      :title="album.title"
-                      :subTitle="album.author"
-                      :text="album.year"
-                      :text2="album.genre"
+                    :image="album.poster"
+                    :title="album.title"
+                    :subTitle="album.author"
+                    :text="album.year"
+                    :text2="album.genre"
                 />
             </div>
        </div>
@@ -29,6 +29,11 @@ export default {
     },
     props: {
         cardList: Array,
+    },
+    computed: {
+        condLoader() {
+            return this.cardList.length !== 0;
+        }
     }
 }
 </script>
