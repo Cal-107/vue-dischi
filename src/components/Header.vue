@@ -4,10 +4,12 @@
       <div class="choose-genre">
         <label>Choose your genre</label>
         <select 
-                v-model="genreValue" 
-                @change="$emit('toSetValue', genreValue)"
+            v-model="genreValue" 
+            @change="$emit('toSetValue', genreValue)"
         >
-            <option value="">All</option>
+            <option value="">
+                All
+            </option>
             <option 
                 v-for="(el, i) in genreProp" :key="`el-${i}`"
             >
