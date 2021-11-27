@@ -8,9 +8,13 @@
     font-family: $font-family;
 }
 
-#app {
-    font-size: $base-font;
-    color: $text-color-1;
-    background-color: $bg-1;
+body {
     height: 100vh;
+    overflow: hidden;
+    #app {
+        font-size: $base-font;
+        color: $text-color-1;
+        background-color: $bg-1;
+        height: 100%;
+    }
 }

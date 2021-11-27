@@ -33,18 +33,16 @@ export default {
     .img-box {
         padding: 2rem;
         img {
-            width: 100px
-        }
-        animation: rotate 1s infinite alternate;
-    }
-
-    @keyframes rotate {
-        from {
-            
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(359deg);
+            width: 100px;
+            animation: rotate 1s infinite alternate;
+            @keyframes rotate {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(359deg);
+                }
+            }
         }
     }
 }

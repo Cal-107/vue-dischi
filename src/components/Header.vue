@@ -7,16 +7,12 @@
                 v-model="genreValue" 
                 @change="$emit('toSetValue', genreValue)"
         >
-            <option value=""> All Genre </option>
+            <option value="">All</option>
             <option 
-                v-for="(el, i) in genreList" :key="`el-${i}`"
+                v-for="(el, i) in genreProp" :key="`el-${i}`"
             >
-            {{ el }}
+                {{ el }}
             </option>
-            <!-- <option value=''>All</option>
-            <option value="Pop">Pop</option>
-            <option value="Jazz">Jazz</option>
-            <option value="Metal">Metal</option> -->
         </select>
       </div>
   </div>
@@ -27,7 +23,7 @@
 export default {
     name: 'Header',
     props: {
-        genreList: Array,
+        genreProp: Array,
     },
     data() {
         return {
@@ -41,6 +37,9 @@ export default {
 @import '@/styles/variables.scss';
 
 .header {
+    img {
+    width: 60px;
+    }
     background-color: $bg-2;
     display: flex;
     justify-content: space-between;
@@ -66,9 +65,5 @@ export default {
             }
         }
     }
-}
-
-img {
-    width: 60px;
 }
 </style>

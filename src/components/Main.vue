@@ -18,7 +18,6 @@
 </template>
 
 <script>
-// import axios from 'axios';
 import Card from '@/components/Card.vue';
 import Loader from '@/components/Loader.vue';
 
@@ -31,26 +30,6 @@ export default {
     props: {
         cardList: Array,
     }
-    // data() {
-    //     return {
-    //         albumList: [],
-    //     };
-    // },
-
-    // created() {
-    //     this.getAlbumList();
-    // },
-
-    // methods: {
-    //     getAlbumList() {
-    //         axios
-    //         .get('https://flynn.boolean.careers/exercises/api/array/music')
-    //         .then(response => {
-    //             this.albumList = response.data.response;
-    //         })
-    //         .catch(error => console.log(error));
-    //     },
-    // },
 }
 </script>
 
@@ -59,6 +38,7 @@ export default {
 
 .main-section {
     background-color: $bg-1;
+    height: 100%;
     .container {
         display: flex;
         flex-wrap: wrap;
