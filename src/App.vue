@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header @toSetValue="setValue" :genreList="genreList"/>
+    <Header @toSetValue="setValue" :genreProp="genreList"/>
 
     <Main :cardList="filteredAlbum" />
   </div>
@@ -17,48 +17,51 @@ export default {
     Header,
     Main,
   },
+
   data() {
-        return {
-            albumList: [],
-            valueSelect: '',
-            genreList: [],
-        };
-    },
-    computed: {
-      filteredAlbum() {
-        if (this.valueSelect === '') {
-          return this.albumList
-        }
+    return {
+        albumList: [],
+        valueSelect: '',
+        genreList: [],
+    };
+  },
 
-        return this.albumList.filter(el => {
-          return el.genre.includes(this.valueSelect)
-        })
+  computed: {
+    filteredAlbum() {
+      if (this.valueSelect === '') {
+        return this.albumList
       }
+
+      return this.albumList.filter(el => {
+        return el.genre.includes(this.valueSelect)
+      });
     },
+  },
 
-    created() {
-        this.getAlbumList();
-    },
+  created() {
+    this.getAlbumList();
+  },
 
-    methods: {
-        getAlbumList() {
-            axios
-            .get('https://flynn.boolean.careers/exercises/api/array/music')
-            .then(response => {
-                this.albumList = response.data.response;
+  methods: {
+    getAlbumList() {
+        axios
+        .get('https://flynn.boolean.careers/exercises/api/array/music')
+        .then(response => {
+            this.albumList = response.data.response;
 
-                this.albumList.forEach(el => {
-                  if (!this.genreList.includes(el.genre)) {
-                    this.genreList.push(el.genre)
-                  } 
-                })
+            this.albumList.forEach(el => {
+              if (!this.genreList.includes(el.genre)) {
+                this.genreList.push(el.genre);
+              } 
             })
-            .catch(error => console.log(error));
-        },
-        setValue(value) {
-          this.valueSelect = value;
-        }
+        })
+        .catch(error => console.log(error));
     },
+
+    setValue(value) {
+      this.valueSelect = value;
+    }
+  },
 }
 </script>
 
